@@ -1,4 +1,4 @@
-# Action Definition Guide  
+# Action Definition Guide
 
 This guide is designed to help developers understand how to define and structure actions for the OppyDev AI agent. Actions are the fundamental units of functionality that allow users to interact with the system and trigger specific behaviors or responses from the AI. By defining actions, developers can extend the capabilities of the AI agent and create custom workflows tailored to specific use cases. Custom plugins can be used to build powerful and flexible new features that enhance the user experience within the OppyDev environment.
 
@@ -42,7 +42,7 @@ read: (res, action) => {
 
 #### res parameters
 - `res.chatHistory`: An array of previous interactions in the current session, useful for context. If a user provides input when triggering a new task that input will be added to the chat history. The chat history has a maximum size of 14 items, then it starts deleting older entries.
-- `res.data`: An object that can be used as a data store and modified throughout the task's lifecycle.
+- `res.data`: An object that can be used as a data store and modified throughout the task's lifecycle. This stores the project search results, the project folder tree, the prompt switches, token records and other shared data sources saved by other actions.
 - `res.infModel`: The inference model used for generating responses, this is used when responding to questions or generating code.
 - `res.input (read only)`: The user's original input.
 - `res.model`: The specific language model used by the agent to respond to function calls and choose between different actions

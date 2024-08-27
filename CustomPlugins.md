@@ -9,7 +9,7 @@ When debugging a plugin you will be able to output data using the various oppy o
 res.oppyResponse = 'Initializing Introduction to Plugin Actions Loaded';
 ```
 
-You can also use console.log to output strings and objects to the OppyDev logs display.
+You can also use `console.log()` to output strings and objects to the OppyDev logs display. Most things that work in the typical JS console log will display as expected in OppyDev's internal logs when using `console.log()`. If you want to get the most out of OppyDev's log console check out the "Log Fields" section of the OppyDev Usage Guide to learn how you can use JSON formatted logs.
 ``` javascript
 console.log('Initializing Introduction to Plugin Actions Loaded');
 ```

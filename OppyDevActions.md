@@ -25,3 +25,5 @@ The AI agent that powers OppyDev works by stringing together different actions i
 **update file:** This is used to update a specific file. You will need to have a write file selected to use this.
 
 **remember file:** This is used to index a specific file. You will need to have a write file selected to use this.
+
+**search code:** This action does a semantic search of the project files and returns the most similar results. The results can be read from data.codebaseSearchResults. When being accessed by plugins the search results are read only.
