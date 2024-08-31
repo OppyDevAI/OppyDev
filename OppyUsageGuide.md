@@ -180,7 +180,7 @@ Read our best practices guide for getting the most out of AI assisted developmen
 
 # Managing Databases and Other Data
 
-OppyDev stores it's knowledge of your project in its memory using a pinecone vector database.
+OppyDev stores it's knowledge of your project in its memory using a vector database. To do this OppyDev stores metadata about your code files in a remote database hosted by Pinecone. It does not store the code itself, only the metadata.
 
 If using your own pinecone database you can delete your pinecone database by logging into your pinecode account and going to "Indexes" and deleting "oppydev-codebase".
 
