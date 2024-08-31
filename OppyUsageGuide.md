@@ -22,7 +22,7 @@ As you use OppyDev Oppy will add references to your code which will appear as ta
 
 Once Oppy has updated your file it will save automatically. Auto-saving can be turned off in the user menu if needed. After making an update you can revert the changes or add further updates yourself. After the intitial update Oppy will the review the changes made and suggest additional updates if required. You can trigger the suggested update by clicking the revise button. If your project is generating logs he will also respond to error logs made after an update. Try testing your code immedietly after an update, if Oppy sees an error posted in the logs he will update his proposed revision and suggest additional changes. Revising updates can also be turned off in the user menu. You can learn more about working with logs and OppyDev in the logs section.
 
-A full guide on how to use OppyDev with video and images can be found at: https://oppydev.ai/getting-started/
+A full guide on how to use OppyDev with video and images can be found at: https://oppydev.ai/documentation#getting-started
 
 # Interactive Diff
 

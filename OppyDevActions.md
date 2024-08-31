@@ -27,3 +27,8 @@ The AI agent that powers OppyDev works by stringing together different actions i
 **remember file:** This is used to index a specific file. You will need to have a write file selected to use this.
 
 **search code:** This action does a semantic search of the project files and returns the most similar results. The results can be read from data.codebaseSearchResults. When being accessed by plugins the search results are read only.
+
+**scrape:** This action will use the user's local chrome installation to scrape a target URL. You can pass the URL in as input when calling the action or define it on the url parameter of the actions itself.
+
+**take notes:** This action looks at the content parameter from the action immidietly before it and asks the AI to take notes on the content in order to capture the details that are relavent to the user's query.
+
