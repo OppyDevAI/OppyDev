@@ -98,7 +98,7 @@ const PickNextLine = actions['pick next line:'] = {
   autonomy:'auto',
   loader:true,
   agent: {
-    modelResponse: (res, action, modelRes) => {
+    aftermodel: (res, action, modelRes) => {
       // res.systemResponse = JSON.stringify(modelRes, null, 2);
       addNewAction(res.taskList, res.taskNum + 1, {type: modelRes.action});
       if (modelRes.action !== 'finish joke:') {

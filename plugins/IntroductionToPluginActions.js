@@ -34,7 +34,7 @@ const IntroAction = actions['intro action:'] = { // "intro action:" will be the 
       res.oppyResponse = `<Lifecycle submit function response> Thanks for submitting your actions. You can use this space here to message the user about what is coming next and run any code you might need to prepare for the response from the AI.`
     },
 
-    /** The agent's modelResponse function will be run here, in between submit and read.   **/
+    /** The agent's aftermodel function will be run here, in between submit and read.   **/
     /** It is part of the agent rather than the UI and can be defined in the agent object. **/
 
     // This is called when the action is executed (it will not run if the action is skipped or if the response is a streamed response)
@@ -51,8 +51,8 @@ const IntroAction = actions['intro action:'] = { // "intro action:" will be the 
   agent: {
     // This is used if you want to run your own agent action function. It only works when running the agent directly, it will be ignored on plugins. If a model has a call function and a model parameter the call function will be called first then the call to OppyDev's servers will be made with the model object.
     call: undefined, 
-    // modelResponse won't run since this response is going to be streamed back to the UI
-    // modelResponse: (res, action, modelRes) => {}
+    // aftermodel won't run since this response is going to be streamed back to the UI
+    // aftermodel: (res, action, modelRes) => {}
   },
   model: {
     llm: undefined, // This can be set to any valid LLM used by OppyDev, it defaults to GPT-4
@@ -101,7 +101,7 @@ const IntroFunctionCallAction = actions['intro func action:'] = { // "intro acti
       // res.oppyResponse = `<Lifecycle submit function response> Thanks for submitting your actions. You can use this space here to message the user about what is coming next and run any code you might need to prepare for the response from the AI.`
     },
 
-    /** The agent's modelResponse function will be run here, in between submit and read.   **/
+    /** The agent's aftermodel function will be run here, in between submit and read.   **/
     /** It is part of the agent rather than the UI and can be defined in the agent object. **/
 
     // This is called when the action is executed (it will not run if the action is skipped or if the response is a streamed response)
@@ -117,10 +117,10 @@ const IntroFunctionCallAction = actions['intro func action:'] = { // "intro acti
   agent: {
     // This is used if you want to run your own agent action function. It only works when running the agent directly, it will be ignored on plugins. If a model has a call function and a model parameter the call function will be called first then the call to OppyDev's servers will be made with the model object.
     call: undefined, 
-    // If a the action has a model parameter the modelResponse function will be called after the model call 
-    // returns with the models repsonse. (modelResponse won't run for streamed responses)
+    // If a the action has a model parameter the aftermodel function will be called after the model call 
+    // returns with the models repsonse. (aftermodel won't run for streamed responses)
     // The modelRepsonse function will run even if a model parameter isn't defined for consistency so it is easy to resuse action definitions. 
-    modelResponse: (res, action, modelRes) => {
+    aftermodel: (res, action, modelRes) => {
       res.oppyResponse = modelRes.content;
       // modelRes will contain the response you get back from the AI. It can be the results of a function call or just some content.
       // Use this function to pass the part you need back into res to be used down the line or just generate some output

@@ -8,10 +8,10 @@ const PickResults = actions['pick web results:'] = {
   autonomy:'auto',
   loader:true,
   agent: {
-    modelResponse: (returnObj, action, modelResponse) => {
-      console.log('Pick Web Results:', modelResponse);
+    aftermodel: (returnObj, action, modelRes) => {
+      console.log('Pick Web Results:', modelRes);
 
-      if (!modelResponse?.search_results) return;
+      if (!modelRes?.search_results) return;
       
       const taskList = returnObj.taskList;
       let updateIndex = returnObj.taskNum + 1;
@@ -19,7 +19,7 @@ const PickResults = actions['pick web results:'] = {
       const maximumResultsChecked = 3;
       let resultsOutput = '';
 
-      for (var result of modelResponse.search_results) {
+      for (var result of modelRes.search_results) {
         addNewAction(taskList, updateIndex, {type: 'scrape:', autonomy:'auto', url:returnObj?.data?.web_search?.results?.[result]?.link});
         updateIndex++;
         // You can use OppyDev's built in note taking action of you can use your own defined below

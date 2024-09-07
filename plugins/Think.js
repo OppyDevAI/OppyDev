@@ -34,8 +34,8 @@ const Think = actions['think:'] = {
   autonomy:'auto',
   loader:true,
   agent: {
-    modelResponse: (res, action, modelRes) => {
-      // res.systemResponse = JSON.stringify(res, null, 2);
+    aftermodel: (res, action, modelRes) => {
+      res.systemResponse = JSON.stringify(modelRes, null, 2);
       res.oppyResponse = modelRes.response;
     }
   },

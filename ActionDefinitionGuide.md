@@ -19,7 +19,7 @@ An action object is a structured representation of a task that can be performed 
 - `streamer`: Setting this parameter tells the system that the action's response from the LLM will be streamed back to the UI. Normal usage of this parameter for plugins should set the value to 'plugin'.
 - `init`: A function that is triggered after all the files in the plugin have been initialized.
 - `workspace`: An object containing lifecycle functions that define the action's behavior at various stages of execution within the UI.
-- `agent`: An object that can contain custom functions to be executed by the agent, such as `call` and `modelResponse`.
+- `agent`: An object that can contain custom functions to be executed by the agent, such as `call` and `aftermodel`.
 
 ## Defining Workspace Lifecycle Functions
 
@@ -58,12 +58,12 @@ The action object reprisents the action that is currently running. Action parame
 
 ## Working with Agent Functions
 
-The agent handles running the actions and making calls to the AI. The `agent` object within an action definition can be used to defing the `call` and `modelResponse` functions. None of the agent functionality will run if the action is skipped. It can include the following functions:
+The agent handles running the actions and making calls to the AI. The `agent` object within an action definition can be used to defing the `call` and `aftermodel` functions. None of the agent functionality will run if the action is skipped. It can include the following functions:
 
 - `call`: This function is used if you want to run your own agent action function. It only works when running the agent directly, it will be ignored on OppyDev plugins. If a model has a call function and a model parameter the call function will be called first then the call to OppyDev's servers will be made with the model object.
-- `modelResponse`: The function that is called with the response from the AI (modelRes) which is derived from the model object defined below. It allows developers to process the model's output and generate the action's results. Here's an example of how the `modelResponse` function can be used within an action definition:
+- `aftermodel`: The function that is called with the response from the AI (modelRes) which is derived from the model object defined below. It allows developers to process the model's output and generate the action's results. Here's an example of how the `aftermodel` function can be used within an action definition:
 ``` javascript
-modelResponse: (res, action, modelRes) => {
+aftermodel: (res, action, modelRes) => {
   res.oppyResponse = `Here are the results of your query: ${modelRes.content}` 
   // modelRes will contain the response you get back from the AI. It can be the results of a function call or just some content.
   // Use this function to pass the part you need back into res to be used down the line or just generate some output
@@ -72,9 +72,9 @@ modelResponse: (res, action, modelRes) => {
   console.log(modelRes)
   // Save the data to the shared data store so that it is easily accessible and can persist across different tasks
   res.data.intro_action.keep = true // stop the data from being cleaned up when the task ends
-  res.data.intro_action.data = modelResponse.function_call_response; // function_call_response will be named based on the object defined in model.function_call_props
+  res.data.intro_action.data = modelRes.function_call_response; // function_call_response will be named based on the object defined in model.function_call_props
   // Save the data so that it is associated with this action. This is useful if you want follow up action to react to the results from this action.
-  action.data = modelResponse.function_call_response;
+  action.data = modelRes.function_call_response;
 }
 ```
 

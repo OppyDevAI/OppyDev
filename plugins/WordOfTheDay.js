@@ -1,14 +1,14 @@
 console.log('Word of the Day Loaded');
 
-const actionCall = async (returnObj, action, modelResponse) => {
+const actionCall = async (returnObj, action, modelRes) => {
   console.log('Word of the Day Action Run: ' + action.name);
   console.log('plugin returnObj: ', returnObj);
   // returnObj.data.pickWord = 'Hello';
-  returnObj.oppyResponse = modelResponse.content;
+  returnObj.oppyResponse = modelRes.content;
 
-  // returnObj.oppyResponse = 'Picking Word modelResponse did run';
-  // returnObj.oppyError = 'Picking Word modelResponse did error';
-  // returnObj.systemResponse = 'Picking Word modelResponse did system';
+  // returnObj.oppyResponse = 'Picking Word aftermodel did run';
+  // returnObj.oppyError = 'Picking Word aftermodel did error';
+  // returnObj.systemResponse = 'Picking Word aftermodel did system';
   // Make a GET request to a URL
   // await fetch('https://api.weather.gov')
   // .then(response => {
@@ -75,9 +75,9 @@ const PickWord = actions['pick word:'] = {
     }
   },
   agent: {
-    call: undefined, // This is used if you want to run your own agent action function. It will be ignored on plugins. If a model has a call function and a model parameter the call function will be called first then the call to pinky will be made with the model param and then modelResponse will be run.
+    call: undefined, // This is used if you want to run your own agent action function. It will be ignored on plugins. If a model has a call function and a model parameter the call function will be called first then the call to pinky will be made with the model param and then aftermodel will be run.
     // Action functions go here
-    modelResponse: actionCall // If a the action has a model parameter this will be called after the model call returns with the models repsonse. modelRepsonse should be run even if a model parameter isn't defined for the sake of consistency so that it is easy to resuse action definitions. modelResponse won't run for streamed responses.
+    aftermodel: actionCall // If a the action has a model parameter this will be called after the model call returns with the models repsonse. modelRepsonse should be run even if a model parameter isn't defined for the sake of consistency so that it is easy to resuse action definitions. aftermodel won't run for streamed responses.
   },
   model: {
     llm: undefined, // This can be set to any valid LLM used by OppyDev, it defaults to GPT-4
@@ -126,7 +126,7 @@ const DefineWord = actions['define word:'] = {
   },
   agent: {
     // Action functions go here
-    modelResponse: actionCall
+    aftermodel: actionCall
   },
   model: {
     // Model parameters go here
