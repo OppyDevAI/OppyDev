@@ -6,9 +6,15 @@ If you have a promo code enter it in the user menu in the bottom right and click
 
 If you don't have a promo code or haven't added credit to your OppyDev account you can still use OppyDev by providing your own API keys for pinecone and OpenAI. Make sure you've entered your pinecone API key and environment in the user menu in the bottom right. You will also need to enter your OpenAI API key in the same menu. Go to https://oppydev.ai/download/#getting-set-up for detailed instructions on using your own API keys.
 
+The key to getting good results with AI is to focus its attention where it needs to be. OppyDev does this by creating a working memory of your codebase so it has a broad overview of how things work. It is able to then use that to answer questions and automatically implement updates across multiple files. The current state of the art AI models can get better results if a developer can focus their attention and then work through the problem with them. OppyDev is built with a set of tools that streamlines this back and forth process between the developer and the AI.
+
+# Getting Started
+
 When you're ready click the folder plus icon in the top left to open a new project folder. If you are going to start using OppyDev with a pre-existing project you may get prompted to create an .oppyignore file in the root of your project folder to ignore files that aren't part of your codebase. Oppy will do this automatically when opening up a project folder for the first time if your project is large enough. The .oppyignore file is very important, since Oppy keeps a working memory of your codebase he won't be able to function well if you include lots of unrelated files. This applies to library folders like node_modules and venv as well as versioning folders like .git. Ignoring the build folder if you have one is also helpful. A good rule of thumb is to ignore all files that you yourself would never look at. The more you can focus Oppy's attention the better your results will be. If you have a .gitignore file OppyDev will copy its contents into the .oppyignore file automatically.
 
 The next step is to add your folder's content to Oppy's memory. This will also trigger automatically when opening up a new project folder. I recommend picking a small or medium sized codebase to start with. Oppy will check the codebase first and estimate the cost of commiting your project to memory. Click the green button to continue and Oppy will begin reading through your codebase and committing the details to his project memory. You will see output in the bottom left of the application displaying the files as they are reviewed. You can cancel this process at any time by clicking the red cross box next to the output. This should be done in a minute or two but could take longer for a bigger codebase. You are now ready to begin coding!
+
+For a general purpose guide on getting the most out of AI assisted development take a look at [Best Practices: A guide to coding with AI](https://medium.com/p/8e80b7714613).
 
 # Basic Usage
 
@@ -20,9 +26,9 @@ When updating or referencing a file Oppy will always use the current version of 
 
 As you use OppyDev Oppy will add references to your code which will appear as tabs below the prompt box. This means that Oppy is able to see these files whilst carrying out tasks. You can remove these files at any time by clicking the x in the top right of the tab. It's good to remove reference files that are no longer needed in order to save on token costs. Clicking on the tab will open the file in a popup so you can review and edit it directly.
 
-Once Oppy has updated your file it will save automatically. Auto-saving can be turned off in the user menu if needed. After making an update you can revert the changes or add further updates yourself. After the intitial update Oppy will the review the changes made and suggest additional updates if required. You can trigger the suggested update by clicking the revise button. If your project is generating logs he will also respond to error logs made after an update. Try testing your code immedietly after an update, if Oppy sees an error posted in the logs he will update his proposed revision and suggest additional changes. Revising updates can also be turned off in the user menu. You can learn more about working with logs and OppyDev in the logs section.
+Once Oppy has updated your file it will save automatically. Auto-saving can be turned off in the user menu if needed. After making an update you can revert the changes or add further updates yourself. After the initial update Oppy will the review the changes made and suggest additional updates if required. You can trigger the suggested update by clicking the revise button. If your project is generating logs he will also respond to error logs made after an update. Try testing your code immediately after an update, if Oppy sees an error posted in the logs he will update his proposed revision and suggest additional changes. Revising updates can also be turned off in the user menu. You can learn more about working with logs and OppyDev in the logs section.
 
-A full guide on how to use OppyDev with video and images can be found at: https://oppydev.ai/documentation#getting-started
+A full guide on how to use OppyDev with video and images can be found at https://oppydev.ai/documentation#getting-started
 
 # Interactive Diff
 
@@ -41,7 +47,7 @@ Your credit will count down gradually as you use the service based on your token
 
 # Manual Controls
 
-Everything done with Oppy automatically can also be done by hand. This is really useful if you know exactly what you want and don't want to go through the whole process of searching through the code and planning updates. Click on the pencil icon next to a file in the file nav to add it as a write file. It will appear in a code editor in the chat window. You can edit it and save it yourself, or you can write a prompt to have Oppy update that specific file. When a file is selected as a write file the prompt box will switch to a double lined border and say "Update File" above it and the prompt button will switch to a pencil icon. This means that any prompt you enter will be considered a command to update the write file. To resume normal usage click on the pencil icon on the file tab under the prompt box to return the file to a regular reference. You can also update a specific section of the code when a file is selected as a write file by selecting the section of the code you want to update. Once the text is selected the prompt box will switch to a thick dashed line border and say "Update by Selection" above it. This is useful for limiting the scope of the update and is also very helpful in big files and can speed up Oppy's reponse.
+Everything done with Oppy automatically can also be done by hand. This is really useful if you know exactly what you want and don't want to go through the whole process of searching through the code and planning updates. Click on the pencil icon next to a file in the file nav to add it as a write file. It will appear in a code editor in the chat window. You can edit it and save it yourself, or you can write a prompt to have Oppy update that specific file. When a file is selected as a write file the prompt box will switch to a double lined border and say "Update File" above it and the prompt button will switch to a pencil icon. This means that any prompt you enter will be considered a command to update the write file. To resume normal usage click on the pencil icon on the file tab under the prompt box to return the file to a regular reference. You can also update a specific section of the code when a file is selected as a write file by selecting the section of the code you want to update. Once the text is selected the prompt box will switch to a thick dashed line border and say "Update by Selection" above it. This is useful for limiting the scope of the update and is also very helpful in big files and can speed up Oppy's response.
 
 OppyDev tries to make the interaction between you and the AI as fluid as possible. For example, you can open a file, add a couple changes or some comments explaining what you want, then put in a prompt and ask Oppy to fill in the details. Once you get the response back you can edit right on top of the diff so you get exactly what you want before saving the file. If you need more changes to the same file, just type another prompt and Oppy will continue working until you get what you need. This whole process is saved in the conversation window so you can scroll back at any point to review your progress.
 
@@ -57,9 +63,9 @@ You can also select part of an open file and click the button that appears in th
 
 The AI agent that powers OppyDev works by stringing together different actions in order to complete a task. Each of these tasks and actions can be triggered by Oppy automatically or manually by the user by entering them into the prompt box. Enter the task into the prompt box with a colon at the end to trigger the task. Some tasks can accept additional input as instructions, others are run as is. When your cursor is in an empty prompt box you can press tab to cycle through several of the most useful tasks.
 
-**ask oppy:** This will return an immediate reponse to your prompt from the AI. Typically this would be used when you want a quick answer to a question. Your project details and files references will also be visible to the AI when generating it's response.
+**ask oppy:** This will return an immediate response to your prompt from the AI. Typically this would be used when you want a quick answer to a question. Your project details and files references will also be visible to the AI when generating it's response.
 
-**ask search:** This will search the web first to find sources that can help respond to your prompt before sending the results of the search to the AI to generate a response. The AI will identify relavent details in the online sources and then summarize the results in order to respond to your prompt. Chrome needs to be installed on your computer for this task to work.
+**ask search:** This will search the web first to find sources that can help respond to your prompt before sending the results of the search to the AI to generate a response. The AI will identify relevant details in the online sources and then summarize the results in order to respond to your prompt. Chrome needs to be installed on your computer for this task to work.
 
 **get docs:** This will write documentation to a .md file based on a URL you pass into the task. The file will automatically be saved into the documentation folder of your current project. You can then use this documentation as a reference when prompting Oppy to give him a better understanding of the coding environment you are working in. Chrome needs to be installed on your computer for this task to work.
 
@@ -79,15 +85,24 @@ The AI agent that powers OppyDev works by stringing together different actions i
 The file nav also gives useful information about how the AI is seeing your project. Oppy automatically ignores unknown file types to improve his focus and save token space. These files will be greyed in the file nav but can still be used as references by adding them manually. Files that are colored red are to big for Oppy to work with.
 
 **Task Queue Display**
-You can see the current task queue in the bottom right of the application by hovering over the current task display whilst a task is running. Learn more about all the OppyDev tasks and actions at https://oppydev.ai/documentation/oppydev-actions/.
+You can see the current task queue in the bottom right of the application by hovering over the current task display whilst a task is running. View documentation for all the OppyDev tasks and actions at https://github.com/OppyDevAI/OppyDev/blob/main/OppyDevActions.md.
 
 **Token Monitor**
 You can monitor how many tokens are being sent in each request by using the token counter which appears to the left of the credit display in the bottom right of the application. Hover over the token counter to get a break down of what is contributing to your total token count. This is an estimate of the total token count and may not always be 100% accurate.
 
 **Log monitor**
-OppyDev will automatically monitor any logs that are being generated by your project. This can be very useful for having him respond to errors or other output in the logs. The most recent log will be displayed in the bottom left, click on it to open the full log view. You can use the keyboard shortcut ctrl ` to open the log viewer. This will display all the logs in your project. OppyDev will automatically order your logs by timestamp allowing you to see a composit view of all the logs output by your project. It is recommended to use a JSON based logging system so you can specify the exact timestamp when the log was posted, if this does not exist it will timestamp all the logs read with the last time that the log file was updated.
+OppyDev will automatically monitor any logs that are being generated by your project. This can be very useful for having him respond to errors or other output in the logs. The most recent log will be displayed in the bottom left, click on it to open the full log view. You can use the keyboard shortcut ctrl ` to open the log viewer. This will display all the logs in your project. OppyDev will automatically order your logs by timestamp allowing you to see a composite view of all the logs output by your project. It is recommended to use a JSON based logging system so you can specify the exact timestamp when the log was posted, if this does not exist it will timestamp all the logs read with the last time that the log file was updated.
 
-OppyDev also outputs internal logs that include details you may find helpful when using the application. These details allow you to see relavent information that is being used to generate Oppy's reponses. These logs can be helpful to better understand how the system works and are also very useful if you try to build your own custom plugins.
+OppyDev also outputs internal logs that include details you may find helpful when using the application. These details allow you to see relevant information that is being used to generate Oppy's responses. These logs can be helpful to better understand how the system works and are also very useful if you try to build your own custom plugins.
+
+## Plugins
+
+OppyDev allows you to create and share your own plugins that make use of OppyAgent, the AI agent that powers OppyDev. Find out more using the links listed below.
+
+* [OppyDev Plugin Creation](https://github.com/OppyDevAI/OppyDev/blob/main/CustomPlugins.md) - Simple explainer to get started creating plugins
+* [Action Definition Guide](https://github.com/OppyDevAI/OppyDev/blob/main/ActionDefinitionGuide.md) - Documentation on defining a new action for OppyAgent
+* [OppyAgent Action Template](https://github.com/OppyDevAI/OppyDev/blob/main/plugins/IntroductionToPluginActions.js) - An example template that demonstrates how to define new actions
+* [OppyDev Actions](https://github.com/OppyDevAI/OppyDev/blob/main/OppyDevActions.md) - A list of built in actions supported by OppyAgent
 
 ## Internal Logs
 
@@ -113,7 +128,7 @@ Regular text based logs will work as you would expect with OppyDev. To get the m
 - `channel`: The channel for the log, e.g. ios, android, web.
 - `version`: The version of the application that triggered the log.
 - `build_os`: The OS the log is being triggered in, e.g. OSX, Windows, Linux.
-- `obj`: An object that acommpanies the log. An abridged version of this will appear in the one line log message along with a detailed output of the whole object in the log body.
+- `obj`: An object that accompanies the log. An abridged version of this will appear in the one line log message along with a detailed output of the whole object in the log body.
 - `stack`: A stack trace of where the log was triggered.
 - `prompts`: An array of the prompts that are sent to the AI. This is output to the console in a format that is easy to read.
 
@@ -145,7 +160,7 @@ Open and close full screen mode with F11
 
 You can access user settings by hovering over the user icon in the bottom right of the application
 
-The following settings are available
+The following settings are available:
 
 * Inference Model – Select which model you want to use for inference actions. This will be used when generating responses to questions or generating code.
 * Agent Model – Select which model you want to use when running tasks and actions. These requests make use of function calling and expect formatted resonses.
@@ -157,7 +172,7 @@ The following settings are available
 * Capture Training Data - This will capture training data when you are making updates to the code that could be used in the future to finetune a customized AI model.
 * Review & Revise Updates - This will turn on/off reviewing the code updates after they are made and suggesting additional changes.
 * Auto-save Updates - This will turn on/off automatically saving the current file after Oppy makes an update to the code.
-* Promo Code - If you have a promo code enter it here and then click the check circle button to submit the code and recieve your promotional offer
+* Promo Code - If you have a promo code enter it here and then click the check circle button to submit the code and receive your promotional offer
 * Set Personality - Make your coding session a little more entertaining by giving your AI coding partner a personality. Put it any description you want, such as the name of a fictional character or a description of the AI's desired personality and speaking style.
 * Reset Session - This is the same as pressing "ctrl r". It will reset the current session by removing all referenced files, chat history, etc.
 * Logout – Logs you out of the application. This will remove all saved data in the app including API keys.
@@ -172,7 +187,7 @@ When updating files it works best to phrase your update as an instruction. Don�
 
 Try to keep your code files small. It will reduce costs, be faster and get you better result.
 
-You can have OppyDev ignore files in your project folder by creating an .oppyignore file and listing them there as you would with .gitignore. It is important to ignore large unused folders like a build folder, or .git. It can also be useful to hide sensitive files that you don't want inlcluded in training data or sent to the LLM. You can also hide content from OppyDev by placing it inside a folder called oppyignore.
+You can have OppyDev ignore files in your project folder by creating an .oppyignore file and listing them there as you would with .gitignore. It is important to ignore large unused folders like a build folder, or .git. It can also be useful to hide sensitive files that you don't want included in training data or sent to the LLM. You can also hide content from OppyDev by placing it inside a folder called oppyignore.
 
 A good trick for helping Oppy to write better code is to grab the most recent documentation of any libraries you are using from the readme in their git repo and add it into the documentation folder for your project. You can also use the "get docs:" task to write documentation files into your codebase based on a URL.
 
@@ -188,10 +203,10 @@ When using the paid version of OppyDev you can delete your vector DB by using th
 
 The saved application data, local database and training data saved when using OppyDev can be deleted at any time by deleting it from the application data folder. Delete the whole folder if you are uninstalling OppyDev and want to clean up any data saved by the application. The application data folder can be found in the following locations:
 
-Windows: C:\Users\YOUR_ACCOUNT\AppData\Roaming\OppyDev
-Mac: /Users/YOUR_ACCOUNT/Library/Application Support/OppyDev
+Windows: `C:\Users\YOUR_ACCOUNT\AppData\Roaming\OppyDev`
+Mac: `/Users/YOUR_ACCOUNT/Library/Application Support/OppyDev`
 
-During the beta period paid pay as you go users are guaranteed 2000 indexes in their project memory. Paid subscribers are guaranteed 5000 indexes. This is usually more than enough to support several projects. This limit is not enforced, if we see that you are using up a lot of vector space we will reach out to you to find a solution. If a project memory has not been used in a long time and it is taking up a lot of space we may remove it. If this happens the project memory can be recreated very easily by reopening your project folder or using the "setup project memory:" command. If you require a lot of memory space for a very large project you may want to consider setting up your own pinecone DB and supplying your own API key. There is a free version available that gives you 100,000 vectors with the caveat that it will be cleaned up if it is not used within 7 days. In this case you can recreate the project memory simply by opening up the selected project folder or using the "setup project memory:". If at anypoint you want to resync the project state with Oppy's memory you can use the "remember codebase:" command.
+During the beta period paid pay as you go users are guaranteed 2000 indexes in their project memory. Paid subscribers are guaranteed 5000 indexes. This is usually more than enough to support several projects. This limit is not enforced, if we see that you are using up a lot of vector space we will reach out to you to find a solution. If a project memory has not been used in a long time and it is taking up a lot of space we may remove it. If this happens the project memory can be recreated very easily by reopening your project folder or using the "setup project memory:" command. If you require a lot of memory space for a very large project you may want to consider setting up your own pinecone DB and supplying your own API key. There is a free version available that gives you 100,000 vectors with the caveat that it will be cleaned up if it is not used within 7 days. In this case you can recreate the project memory simply by opening up the selected project folder or using the "setup project memory:". If at any point you want to resync the project state with Oppy's memory you can use the "remember codebase:" command.
 
 # Attributions
 
@@ -203,4 +218,5 @@ During the beta period paid pay as you go users are guaranteed 2000 indexes in t
 - html-loader – https://webpack.js.org/loaders/html-loader/
 - copy-webpack-plugin – https://webpack.js.org/plugins/copy-webpack-plugin/
 - LangChain - https://www.langchain.com/
+- JS-Tiktoken - https://github.com/dqbd/tiktoken
 - Readability - https://github.com/mozilla/readability

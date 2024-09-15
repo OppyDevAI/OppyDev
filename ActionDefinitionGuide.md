@@ -2,7 +2,7 @@
 
 This guide is designed to help developers understand how to define and structure actions for the OppyDev AI agent. Actions are the fundamental units of functionality that allow users to interact with the system and trigger specific behaviors or responses from the AI. By defining actions, developers can extend the capabilities of the AI agent and create custom workflows tailored to specific use cases. Custom plugins can be used to build powerful and flexible new features that enhance the user experience within the OppyDev environment.
 
-OppyDev come with many pre-existing actions built in which can be used when creating your own plugins. Documentation for existing actions can be found **here**.
+OppyDev come with many pre-existing actions built in which can be used when creating your own plugins. Documentation for existing actions can be found [here](https://github.com/OppyDevAI/OppyDev/blob/main/OppyDevActions.md).
 
 Warning: If using 3rd party plugins be sure to check they are from a trusted source. Plugins are sandboxed but you should still check the code and exercise caution when executing code from an unknown source.
 
@@ -54,11 +54,11 @@ read: (res, action) => {
 - `res.taskNum`: The current action number, useful for tracking the order of actions within a plan.
 
 #### action parameters
-The action object reprisents the action that is currently running. Action parameters contain the generic parameters mentioned above that exist for every action, i.e. type, name, actionID, loader, etc. Additional parameter can be added that are unique to that action. These are often used so that actions can build on each other by referencing data that was generated and stored in previous actions.
+The action object represents the action that is currently running. Action parameters contain the generic parameters mentioned above that exist for every action, i.e. type, name, actionID, loader, etc. Additional parameter can be added that are unique to that action. These are often used so that actions can build on each other by referencing data that was generated and stored in previous actions.
 
 ## Working with Agent Functions
 
-The agent handles running the actions and making calls to the AI. The `agent` object within an action definition can be used to defing the `call` and `aftermodel` functions. None of the agent functionality will run if the action is skipped. It can include the following functions:
+The agent handles running the actions and making calls to the AI. The `agent` object within an action definition can be used to define the `call` and `aftermodel` functions. None of the agent functionality will run if the action is skipped. It can include the following functions:
 
 - `call`: This function is used if you want to run your own agent action function. It only works when running the agent directly, it will be ignored on OppyDev plugins. If a model has a call function and a model parameter the call function will be called first then the call to OppyDev's servers will be made with the model object.
 - `aftermodel`: The function that is called with the response from the AI (modelRes) which is derived from the model object defined below. It allows developers to process the model's output and generate the action's results. Here's an example of how the `aftermodel` function can be used within an action definition:
@@ -93,9 +93,9 @@ The `model` object within an action definition specifies how the AI model should
 - `prompts`: Contains the prompts that will be sent to the AI model. This includes the `systemPrompt`, which is the main instruction for the AI.
   - `systemPrompt`: The system prompt used to instruct the AI on how to respond to the user's input. For actions that use `choices` you should leave this blank and it will generate a default that includes the action descriptions for each action.
   - `instructions`: If includeChatHistory is false instructions will be used instead of the chat history.
-- `function_description`: 
-- `function_call_props`: 
-- `required`: 
+- `function_description`: This is a description and of function and should also include an explanation of when it should be called.
+- `function_call_props`: This is a JSON Schema that will define the structured JSON response you are expecting to recieve from the model. See examples [here](https://github.com/OppyDevAI/OppyDev/tree/main/plugins).
+- `required`: This is an array of strings that lists which properties in the function_call_props are required. Properties not listed here will be considered optional by the model.
 - `assets`: Defines additional resources that the AI model should consider when generating a response, such as reference files or notes.
   - `web_search`: A boolean indicating whether the AI should include web search results in the reference material sent to the AI.
   - `notes`: A boolean indicating whether the AI should include notes taken by the take notes action in the reference material sent to the AI.
