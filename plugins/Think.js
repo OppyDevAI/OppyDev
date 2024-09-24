@@ -52,7 +52,7 @@ const Think = actions['think:'] = {
       },
       response: {
         type: 'string',
-        description: `A short response stating that you either need to correct your previous response or that the initial response was okay.`
+        description: `A short response that corrects the initial response or confirms that the initial response was okay`
       }
     },
     required: ['associated_words'],
