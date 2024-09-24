@@ -48,7 +48,7 @@ const Think = actions['think:'] = {
     function_call_props: {
       chain_of_thought: {
         type: 'string',
-        description: `An explanation of how best to responds to the user's query by thinking it through step by step`
+        description: `A detailed chain of thought explanation of how best to responds to the user\'s query that includes every step required to arrive at an accurate response`
       },
       response: {
         type: 'string',
