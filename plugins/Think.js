@@ -1,5 +1,5 @@
 console.log('Revise Plugin Loaded');
-// ask: Write a sentence that ends with a number that is also the number of word in the sentence
+// ask: Write a sentence that ends with a number that is also the number of words in the sentence
 // ask: I can't count, can you help me out by telling me how many words are in the sentence I'm typing right now
 // ask: What is 34.53278954 + 1.8494324 / 98 // (0.0188717591836735) 34.55166129918367
 

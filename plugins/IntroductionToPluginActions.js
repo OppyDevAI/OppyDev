@@ -3,7 +3,7 @@
 
 const currentDate = new Date();
 
-const IntroAction = actions['intro action:'] = { // "intro action:" will be the command you type in the OppyDev UI to trigger the action
+actions['intro action:'] = { // "intro action:" will be the command you type in the OppyDev UI to trigger the action
   type: 'intro action:',
   name: 'Introducing Plugin Actions', // This will be description of the action you see in the menus
   actionID: 'intro_action', // This is a unique actions ID
@@ -74,7 +74,7 @@ const IntroAction = actions['intro action:'] = { // "intro action:" will be the 
   }
 }
 
-const IntroFunctionCallAction = actions['intro func action:'] = { // "intro action:" will be the command you type in the OppyDev UI to trigger the action
+actions['intro func action:'] = { // "intro action:" will be the command you type in the OppyDev UI to trigger the action
   type: 'intro func action:',
   name: 'Introducing Plugin Function Call Actions', // This will be description of the action you see in the menus
   actionID: 'intro_func_action', // This is a unique actions ID
@@ -174,7 +174,9 @@ tasks['intro task:'] = {
   type: 'double intro:',
   name: 'Running the intro action twice',
   sayComplete: true, // This tells the system to output that the task is complete once it's finished
-  // This is a list of the action that will run in the task. The will run in order.
-  // In this case since we only have 1 task I will run it twice as an example.
-  planList: [ IntroAction, {type: 'intro func action:', input:'Coding'} ]
+  // This is a list of the actions that will run in the task. They will run in order.
+  planList: [
+    {type: 'intro action:'},
+    {type: 'intro func action:', input:'Coding'}
+  ]
 }
