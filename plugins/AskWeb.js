@@ -1,6 +1,6 @@
 console.log('Ask Web Loaded');
 
-const PickResults = actions['pick web results:'] = {
+actions['pick web results:'] = {
   // Action Properties
   type: 'pick web results:',
   name: 'Picking Results',
@@ -83,7 +83,7 @@ const TakeNotes = actions['take web notes:'] = {
   taskComplete: undefined
 }
 
-const CompleteResearch = actions['complete ask web:'] = {
+actions['complete ask web:'] = {
   // Action Properties
   type: 'complete ask web:',
   name: 'Finishing Up',
@@ -109,8 +109,8 @@ tasks['ask web:'] = {
   sayComplete: true,
   planList: [
     {type: 'search:', name: 'Searching', functionCallName: 'search', autonomy:'auto', loader:true},
-    PickResults,
+    {type: 'pick web results:'},
     // Scraping and take notes will be added here by the pick results action
-    CompleteResearch
+    {type: 'complete ask web:'}
   ]
 }

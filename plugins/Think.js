@@ -45,15 +45,15 @@ const Think = actions['think:'] = {
       systemPrompt: `Review the user's most recent query and your response. Think through the user's query and explain your thinking as a chain of thought. Call out anything in your initial response that was incorrect or requires clarification. After your chain of thought explanation provide a brief response stating you either need to correct your previous response or that the initial response was okay.`
     },
     function_description: `This function reviews responses and thinks through the best way to provide an accurate and helpful reponse`,
-    function_call_props: {
-      chain_of_thought: {
-        type: 'string',
-        description: `A detailed chain of thought explanation of how best to responds to the user\'s query that includes every step required to arrive at an accurate response`
-      },
-      response: {
-        type: 'string',
-        description: `A short response that corrects the initial response or confirms that the initial response was okay`
-      }
+    function_call_props_dsadsadasdsa: {
+      //chain_of_thought: {
+      //  type: 'string',
+      //  description: `A detailed chain of thought explanation of how best to responds to the user\'s query that includes every step required to arrive at an accurate response`
+      //},
+      //response: {
+      //  type: 'string',
+      //  description: `A short response that corrects the initial response or confirms that the initial response was okay`
+      //}
     },
     required: ['associated_words'],
     assets: {},

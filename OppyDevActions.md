@@ -6,6 +6,8 @@ The AI agent that powers OppyDev works by stringing together different actions i
 
 **ask search:** This will search the web first to find sources that can help respond to your prompt before sending the results of the search to the AI to generate a response. The AI will identify relavent details in the online sources and then summarize the results in order to respond to your prompt. Chrome needs to be installed on your computer for this task to work.
 
+**help:** Use this when asking questions about how to use OppyDev. It can also be used to walk you through how to get started and the features and functionality available in OppyDev.
+
 **get docs:** This will write documentation to a .md file based on a URL you pass into the task. The file will automatically be saved into the documentation folder of your current project. You can then use this documentation as a reference when prompting Oppy to give him a better understanding of the coding environment you are working in. Chrome needs to be installed on your computer for this task to work.
 
 **update codebase:** This will start a new coding task to update your codebase. Oppy will first search his long term memory to find which files he needs to be referenced to complete the task. He will keep suggesting files to reference until he feels that he has all the information he needs. Then he will make a plan to update the files and start stepping through the updates. He will give you a brief explanation of his reasoning during each step so you can follow along and correct any mistakes.
@@ -31,4 +33,3 @@ The AI agent that powers OppyDev works by stringing together different actions i
 **scrape:** This action will use the user's local chrome installation to scrape a target URL. You can pass the URL in as input when calling the action or define it on the url parameter of the actions itself.
 
 **take notes:** This action looks at the content parameter from the action immidietly before it and asks the AI to take notes on the content in order to capture the details that are relavent to the user's query.
-

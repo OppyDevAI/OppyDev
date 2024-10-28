@@ -32,7 +32,7 @@ const actionCall = async (returnObj, action, modelRes) => {
 
 const currentDate = new Date();
 
-const PickWord = actions['pick word:'] = {
+actions['pick word:'] = {
   type: 'pick word:',
   name: 'Picking Word',
   actionID: 'pick_word',
@@ -94,7 +94,7 @@ const PickWord = actions['pick word:'] = {
   }
 }
 
-const DefineWord = actions['define word:'] = {
+actions['define word:'] = {
   type: 'define word:',
   name: 'Defining Word',
   actionID: 'define_word',
@@ -146,5 +146,8 @@ tasks['word of the day:'] = {
   type: 'word of the day:',
   name: 'Selecting Word of the Day',
   // sayComplete: true,
-  planList: [ PickWord, DefineWord ]
+  planList: [
+  	{type: 'pick word:'},
+  	{type: 'define word:'}
+  ]
 }

@@ -5,7 +5,7 @@ const sanitizeFileName = (fileName) => {
   return fileName.replace(/[<>:"/\\|?*]+/g, '-').toLowerCase();
 };
 
-const ReviewDocs = actions['set update docs:'] = {
+actions['set update docs:'] = {
   // Action Properties
   type: 'set update docs:',
   name: 'Reviewing Documentation',
@@ -15,9 +15,9 @@ const ReviewDocs = actions['set update docs:'] = {
   workspace: {
     read: (res, action) => {
     	
-      const lastAction = getLastAction(res.taskNum, res.taskList);
+      const content = res.data.content[res.data.content.length-1]; // Use the last added content item
 			
-			if (!lastAction.content) {
+			if (!content.content) {
       	res.oppyError = 'No content was found when scraping'
       	return; // Do nothing if no content is returned
       }
@@ -25,25 +25,25 @@ const ReviewDocs = actions['set update docs:'] = {
 			var fileName = '';
 			
 		  let contentDesc = `The following content was gathered so it can be used for creating documentation:`;
-		  if (lastAction?.siteName) {
-		  	contentDesc += `\nSource Material Site Name: ${lastAction.siteName}`;
-		  	fileName += lastAction.siteName;
+		  if (content?.siteName) {
+		  	contentDesc += `\nSource Material Site Name: ${content.siteName}`;
+		  	fileName += content.siteName;
 		  }
-		  if (lastAction?.url) contentDesc += `\nSource Material URL: ${lastAction.url}`;
-		  if (lastAction?.title) {
-		  	contentDesc += `\nArticle Title: ${lastAction.title}`;
+		  if (content?.url) contentDesc += `\nSource Material URL: ${content.url}`;
+		  if (content?.title) {
+		  	contentDesc += `\nArticle Title: ${content.title}`;
 		  	if (fileName) fileName += '_';
-		  	fileName += lastAction.title;
+		  	fileName += content.title;
 		  }
-		  if (lastAction?.byline) contentDesc += `\nAuthor: ${lastAction.byline}`;
-		  if (lastAction?.publishedTime) contentDesc += `\nPublished On: ${lastAction?.publishedTime}`;
+		  if (content?.byline) contentDesc += `\nAuthor: ${content.byline}`;
+		  if (content?.publishedTime) contentDesc += `\nPublished On: ${content?.publishedTime}`;
 
 			fileName += '_docs.md';
 			
 			// Sanitize the file name
 			fileName = sanitizeFileName(fileName);
 			
-			const docsContent = `### DOCUMENTATION REFERENCE MATERIAL ###\n${contentDesc}\n\n\`\`\`\n${lastAction.content}\n\`\`\`\n\n`;
+			const docsContent = `### DOCUMENTATION REFERENCE MATERIAL ###\n${contentDesc}\n\n\`\`\`\n${content.content}\n\`\`\`\n\n`;
 			
       const taskList = res.taskList;
       let updateIndex = res.taskNum + 1;
@@ -52,7 +52,7 @@ const ReviewDocs = actions['set update docs:'] = {
       addNewAction(taskList, updateIndex, {
         type: 'update file:',
         input: 'Write documentation into '+fileName+' based on the content provided in the documentation reference material',
-        customReference: docsContent,
+        model: { assets: { custom: docsContent } },
         data: {
           updateFile: {
             fileName: fileName,
@@ -71,6 +71,6 @@ tasks['scrape docs:'] = {
   sayComplete: true,
   planList: [
     {type: 'scrape:'},
-    ReviewDocs
+    {type: 'set update docs:'}
   ]
 };

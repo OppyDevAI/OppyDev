@@ -1,4 +1,4 @@
-const RespondFindFile = actions['respond find file:'] = {
+actions['respond find file:'] = {
   type: 'respond find file:',
   name: 'Responding to user with search results',
   functionCallName: 'respond_to_user',
@@ -22,7 +22,7 @@ const RespondFindFile = actions['respond find file:'] = {
 
 const FindFileTask = {
   type: 'find file:',
-  name: 'Find a file based on a regex search',
+  name: 'Find a file based on a vector search',
   sayComplete: true, // This tells the system to output "task complete" once it's finished
   planList: [
     {
@@ -32,7 +32,7 @@ const FindFileTask = {
       autonomy: 'auto',
       loader: true
     },
-		RespondFindFile
+		{type: 'respond find file:'}
   ]
 };
 
