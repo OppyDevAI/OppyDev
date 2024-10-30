@@ -13,3 +13,14 @@ OppyDev is a new agent based AI assisted coding tool focused on AI and human col
 </h3>
 
 </div>
+<div align="left">
+
+Run this command in your terminal to download, extract, rename, and clean up the OppyDev project in one go.
+
+```sh
+wget https://github.com/OppyDevAI/OppyDev/archive/refs/heads/main.zip -O OppyDev-main.zip && unzip OppyDev-main.zip && mv OppyDev-main oppydev && rm OppyDev-main.zip
+```
+
+After running the command, you will have a directory named `oppydev` containing the OppyDev project files. This will contain all the documentation you need to get started writing plugins as well as several example plugins.
+
+</div>
